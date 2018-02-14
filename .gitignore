@@ -1,0 +1,13 @@
+*.map
+*.log
+*.pid
+.DS_Store
+
+!spec/**/*
+!examples/**/*
+!typings/**/*
+dist/
+
+node_modules/
+
+*/.DS_Store
