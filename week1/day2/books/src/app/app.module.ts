@@ -9,9 +9,10 @@ import { TitleizePipe } from './titleize.pipe';
 // TitleizePipe.skipWords = ['of'];
 
 import * as fromBooks from './books';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
-  declarations: [AppComponent, ...fromBooks.books, TitleizePipe],
+  declarations: [AppComponent, ...fromBooks.books, TitleizePipe, SearchPipe],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]

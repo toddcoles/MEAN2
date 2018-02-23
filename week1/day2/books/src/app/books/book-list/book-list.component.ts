@@ -15,6 +15,7 @@ import { TitleizePipe } from '../../titleize.pipe';
 export class BookListComponent implements OnInit {
   selectedBook: Book;
   books: Book[] = BOOKS;
+  filter: Book = new Book(false);
 
   constructor(private titleize: TitleizePipe) {}
 
@@ -41,5 +42,10 @@ export class BookListComponent implements OnInit {
     console.log('creating ', book);
 
     this.books.push(book);
+  }
+
+  clearFilter(): void {
+    console.log('clearing filter');
+    this.filter = new Book(false);
   }
 }

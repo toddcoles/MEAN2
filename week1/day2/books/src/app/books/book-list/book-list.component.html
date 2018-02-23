@@ -1,19 +1,33 @@
 <app-book-new (create)='onCreate($event)'></app-book-new>
 
 <section>
-  <table>
+  <table class='table table-striped'>
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Year</th>
-        <th>Actions
+        <th>
+          <input type="text" placeholder='id' [(ngModel)]='filter.id'>
+          <button class='clear' *ngIf='filter.id' (click)='filter.id = null'>x</button>
+        </th>
+        <th>
+          <input type="text" placeholder='title' [(ngModel)]='filter.title'>
+          <button class='clear' *ngIf='filter.title' (click)='filter.title = null'>x</button>
+        </th>
+        <th>
+          <input type="text" placeholder='author' [(ngModel)]='filter.author'>
+          <button class='clear' *ngIf='filter.author' (click)='filter.author = null'>x</button>
+        </th>
+        <th>
+          <input type="text" placeholder='year' [(ngModel)]='filter.year'>
+          <button class='clear' *ngIf='filter.year' (click)='filter.year = null'>x</button>
+        </th>
+        <th>
+          Actions
+          <button class='clear' (click)='clearFilter()' *ngIf='filter.id || filter.title || filter.author || filter.year'>x</button>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let book of books' (click)='onSelect(book)'>
+      <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [class.selected]='selectedBook === book'>
         <td> {{ book.id }}</td>
         <td> {{ book.title | titleize }}</td>
         <td> {{ book.author }}</td>

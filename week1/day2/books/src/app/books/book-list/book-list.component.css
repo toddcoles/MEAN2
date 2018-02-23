@@ -1,0 +1,13 @@
+.selected {
+  background-color: #cfd8dc !important;
+  color: white;
+}
+button.clear {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  display: inline-block;
+}
