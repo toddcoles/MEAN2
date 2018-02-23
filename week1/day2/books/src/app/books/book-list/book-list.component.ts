@@ -4,18 +4,25 @@ import { Book } from '../../book';
 
 import { BOOKS } from '../../data/book-data';
 
+import { TitleizePipe } from '../../titleize.pipe';
+
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+  styleUrls: ['./book-list.component.css'],
+  providers: [TitleizePipe]
 })
 export class BookListComponent implements OnInit {
   selectedBook: Book;
   books: Book[] = BOOKS;
 
-  constructor() {}
+  constructor(private titleize: TitleizePipe) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.books.forEach(book => {
+      book.author = this.titleize.transform(book.author);
+    });
+  }
 
   onSelect(book: Book): void {
     console.log('selected book', book);
