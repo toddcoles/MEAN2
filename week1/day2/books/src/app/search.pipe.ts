@@ -16,9 +16,6 @@ export class SearchPipe implements PipeTransform {
   }
 
   private applyFilter<T>(element: T, filter: T): boolean {
-    // console.log('book', element);
-    // console.log('filter', filter);
-
     for (const field in filter) {
       if (this.validInput(filter[field]) && this.validInput(element[field])) {
         if (
