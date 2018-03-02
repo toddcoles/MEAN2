@@ -1,4 +1,4 @@
-<app-book-new (create)='onCreate($event)'></app-book-new>
+<!-- <app-book-new (create)='onCreate($event)'></app-book-new> -->
 
 <div *ngIf='errorMessage'>
   {{ errorMessage }}
@@ -31,7 +31,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let book of books | search:filter' (click)='onSelect(book)' [class.selected]='selectedBook === book'>
+      <tr [routerLink]="['/books', book.id]" *ngFor='let book of books | search:filter' (click)='onSelect(book)' [class.selected]='selectedBook === book'>
         <td> {{ book.id }}</td>
         <td> {{ book.title | titleize }}</td>
         <td> {{ book.author }}</td>
@@ -45,4 +45,4 @@
 </section>
 
 
-<app-book-details [book]='selectedBook'></app-book-details>
+<!-- <app-book-details [book]='selectedBook'></app-book-details> -->

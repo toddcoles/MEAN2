@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Book } from '../../book';
 
@@ -11,11 +12,12 @@ import { BookService } from '../../services';
   styleUrls: ['./book-list.component.css'],
   providers: [TitleizePipe]
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
   selectedBook: Book;
   books: Book[] = [];
   filter: Book = new Book(false);
   errorMessage: string;
+  sub: Subscription;
 
   constructor(
     private bookService: BookService,
@@ -23,12 +25,16 @@ export class BookListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.bookService.getBooks().subscribe(books => {
+    this.sub = this.bookService.getBooks().subscribe(books => {
       this.books = books;
       this.books.forEach(book => {
         book.author = this.titleize.transform(book.author);
       });
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onSelect(book: Book): void {
