@@ -9,8 +9,8 @@
     <thead>
       <tr>
         <th>
-          <input type="text" placeholder='id' [(ngModel)]='filter.id'>
-          <button class='clear' *ngIf='filter.id' (click)='filter.id = null'>x</button>
+          <input type="text" placeholder='id' [(ngModel)]='filter._id'>
+          <button class='clear' *ngIf='filter._id' (click)='filter._id = null'>x</button>
         </th>
         <th>
           <input type="text" placeholder='title' [(ngModel)]='filter.title'>
@@ -31,8 +31,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr [routerLink]="['/books', book.id]" *ngFor='let book of books | search:filter' (click)='onSelect(book)' [class.selected]='selectedBook === book'>
-        <td> {{ book.id }}</td>
+      <tr [routerLink]="['/books', book._id]" *ngFor='let book of books | search:filter' (click)='onSelect(book)' [class.selected]='selectedBook === book'>
+        <td> {{ book._id }}</td>
         <td> {{ book.title | titleize }}</td>
         <td> {{ book.author }}</td>
         <td> {{ book.year }}</td>

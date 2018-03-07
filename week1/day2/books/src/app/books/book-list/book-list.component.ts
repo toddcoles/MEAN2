@@ -15,7 +15,7 @@ import { BookService } from '../../services';
 export class BookListComponent implements OnInit, OnDestroy {
   selectedBook: Book;
   books: Book[] = [];
-  filter: Book = new Book(false);
+  filter: Book = new Book();
   errorMessage: string;
   sub: Subscription;
 
@@ -58,7 +58,7 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   clearFilter(): void {
     console.log('clearing filter');
-    this.filter = new Book(false);
+    this.filter = new Book();
   }
 
   onDelete(id: number): void {
@@ -67,7 +67,7 @@ export class BookListComponent implements OnInit, OnDestroy {
     this.bookService.removeBook(id).subscribe(
       removedBook => {
         console.log('removed book', removedBook);
-        this.books = this.books.filter(book => book.id !== id);
+        this.books = this.books.filter(book => book._id !== id);
       },
       error => {
         console.log('error response', error);

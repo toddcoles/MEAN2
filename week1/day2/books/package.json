@@ -4,12 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run foreman start",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
+    "foreman": "./node_modules/.bin/nf",
     "e2e": "ng e2e"
   },
+  "main": "server.js",
   "private": true,
   "dependencies": {
     "@angular-devkit/core": "^0.4.0",
@@ -23,7 +25,11 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0",
+    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
+    "foreman": "^2.0.0",
+    "mongoose": "^5.0.9",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
