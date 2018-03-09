@@ -6,12 +6,12 @@ import {
   BookNewComponent,
   BookDetailsComponent
 } from './books';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'books',
-    pathMatch: 'full'
+    component: HomeComponent
   },
   {
     path: 'books',

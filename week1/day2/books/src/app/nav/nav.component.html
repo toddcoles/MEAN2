@@ -1,11 +1,15 @@
 <nav>
   <ul>
-    <li>
+    <li *ngIf='!loggedIn'>
       <a routerLink="/">Home</a>
     </li>
 
     <li>
       <a routerLink='books/new'>New Book</a>
+    </li>
+
+    <li *ngIf='loggedIn'>
+      <button (click)='logout()'>Logout</button>
     </li>
   </ul>
 </nav>
